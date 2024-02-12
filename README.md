@@ -21,3 +21,8 @@ This project utilized VScode as the code editor.
 
 Additional Resources: 
 A link for the deployed webpage: 
+https://ricesupply.github.io/js-password-maker/
+
+Picture of deployed website with password creation:
+![image](https://github.com/RiceSupply/js-password-maker/assets/140272444/48c0b78a-467a-40ee-81e1-0a1f67841314)
+

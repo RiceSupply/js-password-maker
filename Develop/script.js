@@ -4,6 +4,8 @@
 
 function generatePassword (length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
   
+  //accepted variables for the password
+
   const lowerCaseChars = 'abcdefghijklmnopqrstuvwxyz';
   const upperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const numberChars = '0123456789';
@@ -12,21 +14,40 @@ function generatePassword (length, includeLowercase, includeUppercase, includeNu
   let allowedChars = "";
   let password = "";
 
+  //if parameters are true, add to the allowed characters
   allowedChars += includeLowercase ? lowerCaseChars : '';
   allowedChars += includeUppercase ? upperCaseChars : '';
   allowedChars += includeNumbers ? numberChars : '';
   allowedChars += includeSymbols ? symbolChars : '';
 
-  console.log(allowedChars);
+  //if parameters are false, return an error
 
-  return '';
+  if(length < 8) {
+    return 'Password length must be at least 8 characters';
+  }
+
+  if(length > 128) { 
+    return 'Password length must be less than 128 characters';
+  }
+
+  if(allowedChars === 0) {
+    return 'At least one character needs to be selected';
+  }
+
+  //for loop to generate the password
+  for(let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * allowedChars.length);
+    password += allowedChars[randomIndex];
+  }
+
+  return password;
 }
 
 const passwordLength = 8;
 const includeLowercase = true;
-const includeUppercase = false;
-const includeNumbers = false;
-const includeSymbols = false;
+const includeUppercase = true;
+const includeNumbers = true;
+const includeSymbols = true;
 
 const password = generatePassword(passwordLength, includeLowercase, includeUppercase, includeNumbers, includeSymbols);
 

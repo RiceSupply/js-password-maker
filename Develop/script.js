@@ -2,10 +2,8 @@
 // Has to be between 8 and 128 characters
 // Can include lower, upper, numbers, and special characters
 
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-
 
 function generatePassword (length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
   
@@ -69,7 +67,7 @@ function writePassword() {
 
   //try catch to generate password and throw errors
   try{
-    var password = generatePassword();
+    var password = generatePassword(length, includeLowercase, includeUppercase, includeNumbers, includeSymbols);
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
   }

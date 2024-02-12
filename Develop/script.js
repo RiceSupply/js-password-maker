@@ -2,6 +2,11 @@
 // Has to be between 8 and 128 characters
 // Can include lower, upper, numbers, and special characters
 
+
+// Get references to the #generate element
+var generateBtn = document.querySelector("#generate");
+
+
 function generatePassword (length, includeLowercase, includeUppercase, includeNumbers, includeSymbols) {
   
   //accepted variables for the password
@@ -53,17 +58,26 @@ const password = generatePassword(passwordLength, includeLowercase, includeUpper
 
 console.log(`Generated password: ${password}`);
 
-// // Get references to the #generate element
-// var generateBtn = document.querySelector("#generate");
+// Write password to the #password input
+function writePassword() {
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
+  const length = parseInt(prompt("How many characters would you like your password to be?"));
+  const includeLowercase = confirm("Would you like to include lowercase characters?");
+  const includeUppercase = confirm("Would you like to include uppercase characters?");
+  const includeNumbers = confirm("Would you like to include numbers?");
+  const includeSymbols = confirm ("Would you like to include special characters?");
 
-//   passwordText.value = password;
+  //try catch to generate password and throw errors
+  try{
+    var password = generatePassword();
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
+  }
+  
+  catch(error){
+    console.log(error);
+  }
+}
 
-// }
-
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
